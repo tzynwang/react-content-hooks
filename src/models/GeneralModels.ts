@@ -1,0 +1,5 @@
+export enum BTN_TYPE {
+  SERVICE = 'SERVICE',
+  CHART = 'CHART',
+  BOOKMARK = 'BOOKMARK',
+}
