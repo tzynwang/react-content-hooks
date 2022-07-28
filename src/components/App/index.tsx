@@ -1,31 +1,65 @@
-import React, { memo } from 'react'
-import classNames from 'classnames'
-
-import Styles from './index.module.css'
+import React, { memo } from 'react';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Category from '@Components/Common/Category';
 
 function App(): React.ReactElement {
+  /* Main */
   return (
-    <main className={classNames(Styles.main)}>
+    <Router>
       <div>
-        Hello world, this React APP is created by{' '}
-        <code className={classNames(Styles.mainCode)}>npx create-react-app with template --choffee</code>.
+        <ul
+          style={{
+            margin: '.5rem auto',
+            display: 'flex',
+            gap: '1rem',
+            listStyleType: 'none',
+          }}
+        >
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/category1/productA">category1</Link>
+          </li>
+          <li>
+            <Link to="/category2/productB">category2</Link>
+          </li>
+          <li>
+            <Link to="/category3/productC">category3</Link>
+          </li>
+          <li>
+            <Link to="/category4/productD">category4</Link>
+          </li>
+        </ul>
+
+        <hr
+          style={{
+            margin: '.5rem auto',
+            border: 'none',
+            borderTop: '1px solid #333',
+          }}
+        />
+
+        <Switch>
+          <Route path="/category1/:productID">
+            <Category />
+          </Route>
+          <Route path="/category2/:productID">
+            <Category />
+          </Route>
+          <Route path="/category3/:productID">
+            <Category />
+          </Route>
+          <Route path="/category4/:productID">
+            <Category />
+          </Route>
+          <Route path="*">
+            <div>Home</div>
+          </Route>
+        </Switch>
       </div>
-      <div>
-        Author: Charlie (Tzu Yin) |{' '}
-        <a href="https://github.com/tzynwang" target="_blank" className={Styles.mainAnchor}>
-          GitHub
-        </a>{' '}
-        |{' '}
-        <a href="https://tzynwang.github.io/" target="_blank" className={Styles.mainAnchor}>
-          Blog
-        </a>{' '}
-        |{' '}
-        <a href="https://www.npmjs.com/~tzyn.wang" target="_blank" className={Styles.mainAnchor}>
-          npm Packages
-        </a>
-      </div>
-    </main>
-  )
+    </Router>
+  );
 }
 
-export default memo(App)
+export default memo(App);
