@@ -47,7 +47,7 @@ export default function useGetBtn(btnType: BTN_TYPE) {
       default:
         return <React.Fragment />;
     }
-  }, [BTN_TYPE]);
+  }, [btnType]);
 
   /* Main */
   return Btn;
